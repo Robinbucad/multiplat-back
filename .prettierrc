@@ -1,0 +1,9 @@
+{
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"arrowParens": "avoid",
+	"editor.formatOnSave": true,
+    "prettier.semi": false
+}
