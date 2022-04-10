@@ -22,7 +22,7 @@ describe.skip('Testing the App Login and Register', () => {
     } )
 
     it ('Should return 201 when user get validated', async ():Promise<void> => {
-        const res = await request(app).get('/auth/validate?token=576aebeb8e7a5c12130af9ce79a0a4b4be42e94fd91ab0d6ea9df83435d516741e56275104557249200ad156ba6a3ce017841f18b8fa4b2a2d906c2163945bc3c9d2ad1aea7863060d72c58fcad2643f7e8c98ed491218ca919e29f848c1c95fcb593f1f6f95eafa6388f660825374f4281aeacc6aa3273ab8329de1d0769ff1').send()
+        const res = await request(app).get('/auth/validate?token='').send()
         expect(res.status).toBe(200)
         
     })
