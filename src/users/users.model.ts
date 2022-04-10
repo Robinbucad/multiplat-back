@@ -81,7 +81,7 @@ export const retrieveUserInfoByEmail = async (email:string) => {
         const db = client.db(DATABASE_NAME);
         const users = db.collection(COLLECTION_NAME);
         const query = { email }
-        const options = {projection: {password:0}} 
+        const options = {projection: {password:0, status:0}} 
         return await users.findOne(query,options);
     } catch (err) {
         console.error(err);

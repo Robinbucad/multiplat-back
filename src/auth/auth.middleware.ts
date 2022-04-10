@@ -18,6 +18,7 @@ export const validateauth = (req:any, res:Response,next:NextFunction) => {
         const token = auth.split(' ')[1]
         const payload:any = jwt.verify(token,jwt_secret)
         req.body.email = payload.email 
+      
         next()
     }catch(err){
         console.error(err)

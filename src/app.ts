@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import http from 'http'
 import AuthRouter from './auth/auth.router'
 import UsersRouter from './users/users.router'
+import { validateauth } from './auth/auth.middleware'
 import cors from 'cors'
 
 dotenv.config()
@@ -21,6 +22,6 @@ app.get('/ping', (req, res) => {
 })
 
 app.use('/auth', AuthRouter);
-app.use('/users', UsersRouter)
+app.use('/users',validateauth, UsersRouter)
 
 server.listen(port, () => console.log(`Se ha iniciado en el puerto ${port}`))
