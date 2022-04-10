@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    browser: true,
     es2021: true,
     node: true
   },
@@ -15,5 +16,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    "no-unused-vars":"off"
   }
 }
