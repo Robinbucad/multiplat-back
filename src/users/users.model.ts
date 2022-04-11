@@ -1,4 +1,4 @@
-import {MongoClient} from 'mongodb'
+import {Collection, Db, MongoClient} from 'mongodb'
 import dotenv from 'dotenv'
 import {UserModel} from '../TYPES'
 
@@ -14,8 +14,8 @@ const COLLECTION_NAME = process.env.NODE_ENV === 'test' ? 'users-test' : 'users'
 export const createUser = async(user:UserModel) => {
     try {
         await client.connect()
-        const db = client.db(DATABASE_NAME)
-        const users = db.collection(COLLECTION_NAME)
+        const db:Db = client.db(DATABASE_NAME)
+        const users:Collection = db.collection(COLLECTION_NAME)
         return await users.insertOne(user);
     } catch (err) {
         console.error(err)
@@ -27,8 +27,8 @@ export const createUser = async(user:UserModel) => {
 export const getUserbyEmailNoStatus = async (email:string) => { 
     try {
         await client.connect()
-        const db = client.db(DATABASE_NAME)
-        const users = db.collection(COLLECTION_NAME)
+        const db:Db = client.db(DATABASE_NAME)
+        const users:Collection = db.collection(COLLECTION_NAME)
         return await users.findOne({ email });
     } catch (err) {
         console.error(err)
@@ -41,8 +41,8 @@ export const getUserbyEmailNoStatus = async (email:string) => {
 export const validateUser = async (email:string) => {
     try {
         await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const users = db.collection(COLLECTION_NAME);
+        const db:Db = client.db(DATABASE_NAME);
+        const users:Collection = db.collection(COLLECTION_NAME);
        
         const updateDoc = {
             $set: {
@@ -60,8 +60,8 @@ export const validateUser = async (email:string) => {
 export const retrieveSuccessByEmailAndPassword = async (email:string, password:string) => {
     try {
         await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const users = db.collection(COLLECTION_NAME);
+        const db:Db = client.db(DATABASE_NAME);
+        const users:Collection = db.collection(COLLECTION_NAME);
         const query = {
             email,
             password,
@@ -78,8 +78,8 @@ export const retrieveSuccessByEmailAndPassword = async (email:string, password:s
 export const retrieveUserInfoByEmail = async (email:string) => {
     try {
         await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const users = db.collection(COLLECTION_NAME);
+        const db:Db = client.db(DATABASE_NAME);
+        const users:Collection = db.collection(COLLECTION_NAME);
         const query = { email }
         const options = {projection: {password:0, status:0}} 
         return await users.findOne(query,options);
@@ -93,8 +93,8 @@ export const retrieveUserInfoByEmail = async (email:string) => {
 export const retrieveAllUsers = async () => {
     try {
         await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const users = db.collection(COLLECTION_NAME);
+        const db:Db = client.db(DATABASE_NAME);
+        const users:Collection = db.collection(COLLECTION_NAME);
         const options = {projection: {password:0}} 
         return await users.find({},options).toArray();
     } catch (err) {
@@ -107,8 +107,8 @@ export const retrieveAllUsers = async () => {
 export const DeleteAllUsers = async () => {
     try {
         await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const users = db.collection(COLLECTION_NAME); 
+        const db:Db = client.db(DATABASE_NAME);
+        const users:Collection = db.collection(COLLECTION_NAME); 
         return await users.deleteMany({})
     } catch (err) {
         console.error('Retrieve all users error',err);
