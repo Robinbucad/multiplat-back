@@ -21,3 +21,9 @@ export type LoginBody = {
     email:'string',
     password:'string'
 }
+
+export type Tweet = {
+    tweet:string
+    user:string
+    date:string
+}

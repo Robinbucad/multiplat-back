@@ -4,6 +4,7 @@ import http from 'http'
 import AuthRouter from './auth/auth.router'
 import UsersRouter from './users/users.router'
 import { validateauth } from './auth/auth.middleware'
+import TweetsRouter from './tweets/tweets.router'
 import cors from 'cors'
 
 dotenv.config()
@@ -23,5 +24,6 @@ app.get('/ping', (req, res) => {
 
 app.use('/auth', AuthRouter);
 app.use('/users',validateauth, UsersRouter)
+app.use('/tweets', TweetsRouter)
 
 server.listen(port, () => console.log(`Se ha iniciado en el puerto ${port}`))
