@@ -38,3 +38,20 @@ export const retrieveTweetsByUser = async(id:string) => {
         await client.close()
     }
 }
+
+export const deleteTweet = async(id:string) => {
+    try{
+        await client.connect()
+        const db:Db = client.db(DATABASE_NAME)
+        const tweets:Collection = db.collection(COLLECTION_NAME)
+
+        const idObj:ObjectId = new ObjectId(id)
+        console.log(idObj)
+        return await tweets.deleteOne({_id:idObj})
+
+    }catch(err){
+        console.error("Retrieve tweet error", err)
+    }finally{
+        await client.close()
+    }
+}

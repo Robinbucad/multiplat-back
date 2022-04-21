@@ -1,5 +1,5 @@
 import express from 'express'
-import {getTweetsByUserCtrl, getTweetsCtrl, postTweetsCtrl} from './tweets.controller'
+import {delTweetCtrl, getTweetsByUserCtrl, getTweetsCtrl, postTweetsCtrl} from './tweets.controller'
 
 const router = express.Router()
 
@@ -9,5 +9,7 @@ router.route('/')
 
 router.route('/:id')
     .get(getTweetsByUserCtrl)
+    .delete(delTweetCtrl)
+
 
 export default router

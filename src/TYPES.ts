@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 
 export type UserModel = {
     email:string,
@@ -26,4 +27,6 @@ export type Tweet = {
     tweet:string
     user:string
     date:string
+    _id?:ObjectId
 }
+

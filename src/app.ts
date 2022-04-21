@@ -24,6 +24,6 @@ app.get('/ping', (req, res) => {
 
 app.use('/auth', AuthRouter);
 app.use('/users',validateauth, UsersRouter)
-app.use('/tweets', TweetsRouter)
+app.use('/tweets',validateauth, TweetsRouter)
 
 server.listen(port, () => console.log(`Se ha iniciado en el puerto ${port}`))
