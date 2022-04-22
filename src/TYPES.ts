@@ -26,7 +26,13 @@ export type LoginBody = {
 export type Tweet = {
     tweet:string
     user:string
+    username:string
     date:string
     _id?:ObjectId
+    id?:string
+    likes:[]
+    retweets:[]
+    img?:string,
+
 }
 

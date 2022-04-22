@@ -15,7 +15,7 @@ export const registerCtrl = async(req:Request<UserModel>,res:Response<ResponseAp
         const user = await getUserbyEmailNoStatus(req.body.email)
         if(user === null){
             req.body.password = encodePassword(req.body.password)
-            await createUser({...req.body, status: 'PENDING_VALIDATION' ,file:''})
+            await createUser({...req.body, status: 'PENDING_VALIDATION' ,file:'', followers:[], following:[]})
             const token:string = generateValidationToken()
      
             await createValidationToken(token,req.body.email)
